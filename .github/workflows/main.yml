@@ -15,7 +15,7 @@ jobs:
           POM_PATH=$(find . -maxdepth 4 -name "pom.xml" | head -n 1)
           DIR_PATH=$(dirname "$POM_PATH")
           cd "$DIR_PATH"
-          sed -i 's/TeleportCause\.CHORUS_FRUIT/TeleportCause.CONSUMABLE_EFFECT/g' src/main/java/ru/sparkcheck/CheckListener.java
+          sed -i 's/CHORUS_FRUIT/CONSUMABLE_EFFECT/g' src/main/java/ru/sparkcheck/CheckListener.java
           sed -i -E 's/^(description: )([^"'\''\n]+:[^"'\''\n]+)$/\1"\2"/' src/main/resources/plugin.yml
           mvn clean package
           mkdir -p "$GITHUB_WORKSPACE/output"
@@ -24,4 +24,3 @@ jobs:
         with:
           name: Compiled-Plugin
           path: output/*.jar
-
